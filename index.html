@@ -1,12 +1,64 @@
-<link rel="stylesheet" href="css/styles.css">
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Portfolio</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aayusha Khadka</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet"/>
 </head>
 <body>
-  Hello world
+
+<div class="cursor" id="cursor"></div>
+<div class="transition-overlay" id="overlay"></div>
+
+<section class="hero" id="hero">
+  <div class="layer layer-bg"       id="layerBg"></div>
+  <div class="layer layer-mist"     id="layerMist"></div>
+  <div class="layer layer-vignette" id="layerVig"></div>
+
+  <div class="nav-logo">AK</div>
+
+  <!-- CAT -->
+  <div class="cat-wrapper" id="catWrapper">
+    <div class="bubble">hey i am heree 🐾</div>
+    <div class="bubble">click click!!</div>
+    <svg class="cat" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="cat-tail" d="M38 36 Q50 30 52 22 Q54 16 48 18" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <ellipse cx="28" cy="36" rx="13" ry="11" fill="white" fill-opacity="0.95"/>
+      <circle cx="28" cy="20" r="10" fill="white" fill-opacity="0.95"/>
+      <polygon points="20,13 17,5 24,11" fill="white" fill-opacity="0.95"/>
+      <polygon points="36,13 39,5 32,11" fill="white" fill-opacity="0.95"/>
+      <polygon points="20,12 18,7 23,11" fill="#ffb5c8" fill-opacity="0.7"/>
+      <polygon points="36,12 38,7 33,11" fill="#ffb5c8" fill-opacity="0.7"/>
+      <ellipse cx="24" cy="20" rx="2.2" ry="2.5" fill="#2a2a2a"/>
+      <ellipse cx="32" cy="20" rx="2.2" ry="2.5" fill="#2a2a2a"/>
+      <circle cx="25" cy="19" r="0.7" fill="white"/>
+      <circle cx="33" cy="19" r="0.7" fill="white"/>
+      <ellipse cx="28" cy="24" rx="1.2" ry="0.8" fill="#ffb5c8"/>
+      <path d="M25 25.5 Q28 27.5 31 25.5" stroke="#aaa" stroke-width="0.8" stroke-linecap="round" fill="none"/>
+      <line x1="18" y1="23" x2="24" y2="24" stroke="#aaa" stroke-width="0.7"/>
+      <line x1="17" y1="25" x2="24" y2="25" stroke="#aaa" stroke-width="0.7"/>
+      <line x1="38" y1="23" x2="32" y2="24" stroke="#aaa" stroke-width="0.7"/>
+      <line x1="39" y1="25" x2="32" y2="25" stroke="#aaa" stroke-width="0.7"/>
+      <ellipse cx="21" cy="46" rx="4" ry="2.5" fill="white" fill-opacity="0.9"/>
+      <ellipse cx="35" cy="46" rx="4" ry="2.5" fill="white" fill-opacity="0.9"/>
+      <ellipse cx="19" cy="47.5" rx="1.2" ry="0.8" fill="#eee"/>
+      <ellipse cx="21" cy="48" rx="1.2" ry="0.8" fill="#eee"/>
+      <ellipse cx="23" cy="47.5" rx="1.2" ry="0.8" fill="#eee"/>
+      <ellipse cx="33" cy="47.5" rx="1.2" ry="0.8" fill="#eee"/>
+      <ellipse cx="35" cy="48" rx="1.2" ry="0.8" fill="#eee"/>
+      <ellipse cx="37" cy="47.5" rx="1.2" ry="0.8" fill="#eee"/>
+    </svg>
+  </div>
+
+  <div class="hero-text" id="heroText">
+    <p class="hero-tag"> Dolakha · Nepal</p>
+    <h1 class="hero-name">This place is from <span>my hometown</span></h1>
+    <p class="hero-sub">I took this photo while we hiked up to a mountain to catch sunrise.</p>
+  </div>
+
+
+<script src="js/tilt.js"></script>
 </body>
 </html>

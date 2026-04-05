@@ -1,5 +1,314 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
-  background: #0b0f14;
-  color: white;
-  font-family: system-ui, sans-serif;
+  background: #f5f2ee;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
 }
+
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  cursor: none;
+}
+
+.layer {
+  position: absolute;
+  inset: -8%;
+  width: 116%;
+  height: 116%;
+  will-change: transform;
+  transition: transform 0.08s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.layer-bg {
+  background: url('../assets/hometown-1.JPG') center/cover no-repeat;
+  filter: brightness(0.92);
+  z-index: 0;
+}
+
+.layer-mist {
+  background: linear-gradient(
+    to bottom,
+    rgba(250, 247, 247, 0.18) 0%,
+    transparent 40%,
+    transparent 60%,
+    rgba(180, 190, 200, 0.25) 100%
+  );
+  z-index: 1;
+}
+
+.layer-vignette {
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(30,28,26,0.45) 100%);
+  z-index: 2;
+  transition: transform 0.14s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero-text {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 6vw 7vh;
+  pointer-events: none;
+  will-change: transform;
+  transition: transform 0.12s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero-tag {
+  font-size: clamp(0.65rem, 1.1vw, 0.8rem);
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(236, 232, 232, 0.65);
+  margin-bottom: 0.6rem;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeUp 0.9s 0.4s forwards;
+}
+
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.2rem, 8vw, 7rem);
+  font-weight: 300;
+  color: #d6b78c;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fadeUp 1s 0.6s forwards;
+}
+
+.hero-name span {
+  display: block;
+  font-weight: 600;
+}
+
+.hero-sub {
+  margin-top: 1.2rem;
+  font-size: clamp(0.75rem, 1.3vw, 0.9rem);
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: rgb(254, 254, 254);
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp 0.9s 0.9s forwards;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 3vh;
+  right: 6vw;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  animation: fadeIn 1s 1.4s forwards;
+}
+
+.scroll-hint span {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  writing-mode: vertical-rl;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+  animation: scrollPulse 2s 1.6s infinite;
+}
+
+.cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+}
+
+.enter-btn {
+  position: absolute;
+  top: 5vh;
+  right: 5vw;
+  z-index: 10;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: rgba(133, 193, 161, 0.85);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  border-radius: 2px;
+  opacity: 0;
+  animation: fadeIn 0.9s 1.2s forwards;
+  transition: background 0.2s, color 0.2s;
+}
+.enter-btn:hover {
+  background: rgba(255,255,255,0.25);
+  color: #62b1af;
+}
+
+.nav-logo {
+  position: absolute;
+  top: 5vh;
+  left: 5vw;
+  z-index: 10;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(107, 172, 149, 0.8);
+  letter-spacing: 0.05em;
+  opacity: 0;
+  animation: fadeIn 0.9s 1s forwards;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+/* cat wrapper */
+.cat-wrapper {
+  position: absolute;
+  left: 55%;
+  top: 45%;
+  transform: translateX(-50%);
+  z-index: 20;
+  cursor: pointer;
+  opacity: 0;
+  animation: fadeIn 1s 1.5s forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.bubble {
+  background: rgba(255,255,255,0.92);
+  color: #2a2a2a;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  padding: 5px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+  position: relative;
+  opacity: 0;
+  transform: translateY(4px) scale(0.9);
+  transition: opacity 0.2s, transform 0.2s;
+  pointer-events: none;
+}
+.bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgba(255,255,255,0.92);
+  border-bottom: none;
+}
+.cat-wrapper:hover .bubble { opacity: 1; transform: translateY(0) scale(1); }
+
+.cat { width: 52px; height: 52px; animation: catBob 2.4s ease-in-out infinite; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4)); }
+.cat-wrapper:hover .cat { animation: catPerk 0.35s ease forwards, catBob 2.4s ease-in-out 0.35s infinite; }
+.cat-tail { animation: tailSwish 1.8s ease-in-out infinite; transform-origin: 38px 36px; }
+
+.transition-overlay {
+  position: fixed;
+  inset: 0;
+  background:#060a14;
+  z-index: 9998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+.transition-overlay.active { opacity: 1; pointer-events: all; }
+
+@keyframes catBob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+@keyframes catPerk { 0%{transform:translateY(0) scale(1)} 50%{transform:translateY(-10px) scale(1.08)} 100%{transform:translateY(-4px) scale(1.04)} }
+@keyframes tailSwish { 0%,100%{transform:rotate(-15deg)} 50%{transform:rotate(15deg)} }
+
+/* cat wrapper */
+.cat-wrapper {
+  position: absolute;
+  left:75%;
+  top: 42%;
+  transform: translateX(-50%);
+  z-index: 20;
+  cursor: pointer;
+  opacity: 0;
+  animation: fadeIn 1s 1.5s forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.bubble {
+  opacity: 0;
+  transform: translateY(4px);
+  animation: bubbleFadeIn 1.4s 3.2s forwards; /* auto fades in, no hover needed */
+  pointer-events: none;
+}
+@keyframes bubbleFadeIn {
+  0%  { opacity:0; transform:translateY(6px) scale(0.92); }
+  100%{ opacity:1; transform:translateY(0)   scale(1);    }
+}
+.cat { animation: catFloat 3s ease-in-out infinite; }
+.cat-arm { transform-origin:22px 32px; animation: armWave 1s ease-in-out infinite; }
+@keyframes catFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+@keyframes armWave  { 0%,100%{transform:rotate(0deg)} 30%{transform:rotate(-38deg)} 60%{transform:rotate(10deg)} }
+
+.bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgba(255,255,255,0.92);
+  border-bottom: none;
+}
+.cat-wrapper:hover .bubble { opacity: 1; transform: translateY(0) scale(1); }
+
+.cat { width: 52px; height: 52px; animation: catBob 2.4s ease-in-out infinite; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4)); }
+.cat-wrapper:hover .cat { animation: catPerk 0.35s ease forwards, catBob 2.4s ease-in-out 0.35s infinite; }
+.cat-tail { animation: tailSwish 1.8s ease-in-out infinite; transform-origin: 38px 36px; }
+
+.transition-overlay {
+  position: fixed;
+  inset: 0;
+  background: #060a14;
+  z-index: 9998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+.transition-overlay.active { opacity: 1; pointer-events: all; }
+
+@keyframes catBob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+@keyframes catPerk { 0%{transform:translateY(0) scale(1)} 50%{transform:translateY(-10px) scale(1.08)} 100%{transform:translateY(-4px) scale(1.04)} }
+@keyframes tailSwish { 0%,100%{transform:rotate(-15deg)} 50%{transform:rotate(15deg)} }

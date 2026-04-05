@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aayusha Khadka — About</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#060a14;font-family:'DM Sans',sans-serif;color:#e8e4dc;overflow-x:hidden}
+
+
+.aurora-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.stars{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(1px 1px at 10% 15%,rgba(255,255,255,0.8) 0%,transparent 100%),
+    radial-gradient(1px 1px at 25% 8%,rgba(255,255,255,0.6) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 40% 20%,rgba(255,255,255,0.9) 0%,transparent 100%),
+    radial-gradient(1px 1px at 55% 5%,rgba(255,255,255,0.7) 0%,transparent 100%),
+    radial-gradient(1px 1px at 70% 12%,rgba(255,255,255,0.5) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 85% 18%,rgba(255,255,255,0.8) 0%,transparent 100%),
+    radial-gradient(1px 1px at 15% 35%,rgba(255,255,255,0.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 30% 42%,rgba(255,255,255,0.6) 0%,transparent 100%),
+    radial-gradient(1px 1px at 60% 38%,rgba(255,255,255,0.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 78% 30%,rgba(255,255,255,0.7) 0%,transparent 100%),
+    radial-gradient(1px 1px at 92% 45%,rgba(255,255,255,0.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 5% 55%,rgba(255,255,255,0.6) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 48% 60%,rgba(255,255,255,0.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 35% 70%,rgba(255,255,255,0.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 65% 65%,rgba(255,255,255,0.6) 0%,transparent 100%),
+    radial-gradient(1px 1px at 88% 72%,rgba(255,255,255,0.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 20% 80%,rgba(255,255,255,0.3) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 50% 88%,rgba(255,255,255,0.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 75% 85%,rgba(255,255,255,0.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 95% 90%,rgba(255,255,255,0.3) 0%,transparent 100%);
+}
+.star-twinkle{position:absolute;border-radius:50%;background:white;animation:twinkle var(--d,3s) var(--delay,0s) ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:0.2;transform:scale(1)}50%{opacity:1;transform:scale(1.5)}}
+
+.beam{
+  position:absolute;
+  top:0;
+  width:var(--w,60px);
+  height:100vh;
+  left:var(--x,50%);
+  background:linear-gradient(
+    to bottom,
+    var(--ctop,rgba(0,200,150,0.0)) 0%,
+    var(--c1,rgba(0,200,150,0.18)) 15%,
+    var(--c2,rgba(0,200,150,0.10)) 50%,
+    var(--c3,rgba(0,200,150,0.04)) 80%,
+    transparent 100%
+  );
+  filter:blur(22px);
+  transform-origin:top center;
+  animation:beamSway var(--dur,8s) var(--del,0s) ease-in-out infinite;
+  border-radius:0 0 50% 50%;
+}
+@keyframes beamSway{
+  0%,100%{transform:scaleX(1) skewX(0deg);opacity:0.7}
+  25%{transform:scaleX(1.2) skewX(2deg);opacity:1}
+  50%{transform:scaleX(0.88) skewX(-1.5deg);opacity:0.6}
+  75%{transform:scaleX(1.1) skewX(1deg);opacity:0.9}
+}
+
+.aurora-band{
+  position:absolute;width:100%;
+  height:var(--bh,120px);top:var(--bt,20%);
+  background:linear-gradient(to right,transparent 0%,var(--bc,rgba(0,180,140,0.06)) 20%,var(--bc,rgba(0,180,140,0.1)) 50%,var(--bc,rgba(0,180,140,0.06)) 80%,transparent 100%);
+  filter:blur(30px);
+  animation:bandPulse var(--bdur,10s) var(--bdel,0s) ease-in-out infinite;
+}
+@keyframes bandPulse{0%,100%{opacity:0.5;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.3)}}
+
+.page{position:relative;z-index:1}
+
+.back-btn{
+  position:fixed;top:4vh;left:5vw;z-index:100;
+  font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(255,255,255,0.35);text-decoration:none;
+  display:flex;align-items:center;gap:6px;
+  opacity:0;animation:fadeIn 0.8s 0.3s forwards;transition:color 0.2s;
+}
+.back-btn:hover{color:rgba(255,255,255,0.8)}
+.back-btn::before{content:'←'}
+
+.bio-hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;padding:14vh 8vw;
+}
+@keyframes mapAppear {
+  0%  { opacity: 0; }
+  100%{ opacity: 1; }
+}
+@keyframes drawNepal {
+  0%   { opacity: 0;    filter: invert(1) sepia(1) saturate(2) hue-rotate(115deg) brightness(0.4) blur(4px); }
+  100% { opacity: 0.05; filter: invert(1) sepia(1) saturate(2) hue-rotate(115deg) brightness(0.4) blur(0px); }
+}
+
+
+.bio-content{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1fr 160px;
+  gap:3rem;align-items:center;
+  max-width:800px;width:100%;
+}
+.bio-tag{font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.8s 0.5s forwards}
+.bio-name{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;line-height:0.95;color:#fff;opacity:0;animation:fadeUp 1s 0.7s forwards}
+.bio-name strong{font-weight:700;display:block;background:linear-gradient(135deg,#00e5a0,#7b9ef7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.bio-divider{width:36px;height:1px;background:linear-gradient(to right,#00c9a7,transparent);margin:1.8rem 0;opacity:0;animation:fadeIn 0.8s 1s forwards}
+.bio-para{font-size:0.9rem;font-weight:300;line-height:1.9;color:rgba(255,255,255,0.45);max-width:440px;opacity:0;animation:fadeUp 0.8s 1.1s forwards}
+.skills-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:1.8rem;opacity:0;animation:fadeUp 0.8s 1.3s forwards}
+.skill-tag{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;border:1px solid rgba(0,210,160,0.22);color:rgba(0,210,160,0.65);padding:4px 12px;border-radius:2px;transition:all 0.2s;cursor:default}
+.skill-tag:hover{background:rgba(0,210,160,0.1);color:#00e5a0}
+/* text slides in from LEFT */
+.bio-tag {
+  opacity:0;
+  transform:translateX(-30px);
+  animation:slideLeft 5s 0.5s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.bio-name {
+  opacity:0;
+  transform:translateX(-40px);
+  animation:slideLeft 6s 0.5s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.bio-divider {
+  opacity:0;
+  transform:translateX(-20px);
+  animation:slideLeft 7s 1s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+.bio-para {
+  opacity:0;
+  transform:translateX(-30px);
+  animation:slideLeft 7s 1.1s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.skills-row {
+  opacity:0;
+  transform:translateX(-30px);
+  animation:slideLeft 7s 1.3s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+/* photo slides in from RIGHT */
+.bio-portrait {
+  opacity:0;
+  transform:translateX(40px);
+  animation:slideRight 5s 0.8s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+@keyframes slideLeft {
+  to { opacity:1; transform:translateX(0); }
+}
+@keyframes slideRight {
+  to { opacity:1; transform:translateX(0); }
+}
+.bio-portrait{
+  width: 350px; height: 400px;
+  border:1px solid rgba(255,255,255,0.08);border-radius:4px;
+  background:rgba(255,255,255,0.03);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;flex-shrink:0;opacity:0;animation:fadeIn 1s 1.4s forwards;
+  backdrop-filter:blur(8px);overflow:hidden;
+}
+.bio-portrait img{width:100%;height:100%;object-fit:cover;border-radius:4px}
+.portrait-placeholder{display:flex;flex-direction:column;align-items:center;gap:8px;padding:1rem;text-align:center}
+.portrait-icon{font-size:2.2rem;opacity:0.2}
+.portrait-label{font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.18);line-height:1.6}
+
+.page-section{padding:8vh 8vw}
+.section-label{font-size:0.62rem;letter-spacing:0.35em;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:3rem;display:flex;align-items:center;gap:16px}
+.section-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.06)}
+
+.exp-grid{display:flex;flex-direction:column;gap:1.2rem}
+.exp-item{
+  background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);
+  border-radius:6px;padding:2rem;backdrop-filter:blur(6px);
+  display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;
+  opacity:0;transform:translateY(16px);
+  transition:opacity 0.6s,transform 0.6s,border-color 0.3s;
+}
+.exp-item:hover{border-color:rgba(0,210,160,0.18)}
+.exp-item.visible{opacity:1;transform:translateY(0)}
+.exp-date{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(0,210,160,0.55);margin-bottom:3px}
+.exp-location{font-size:0.62rem;color:rgba(255,255,255,0.22);margin-bottom:1rem}
+.exp-org{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.32);margin-bottom:0.8rem}
+.exp-role{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.45rem);font-weight:600;color:#fff;margin-bottom:0.5rem}
+.exp-desc{font-size:0.82rem;font-weight:300;color:rgba(255,255,255,0.4);line-height:1.8;max-width:480px}
+
+.exp-chain{display:flex;flex-direction:column}
+.chain-item{padding:0.85rem 0 0.85rem 1.2rem;border-left:1px solid rgba(255,255,255,0.08);position:relative}
+.chain-item::before{content:'';position:absolute;left:-4px;top:1.1rem;width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.15)}
+.chain-item.current::before{background:#00e5a0;box-shadow:0 0 8px rgba(0,229,160,0.6)}
+.chain-item:first-child{padding-top:0}
+.chain-item:first-child::before{top:0.3rem}
+.chain-role{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;margin-bottom:2px}
+.chain-desc{font-size:0.78rem;font-weight:300;color:rgba(255,255,255,0.38);line-height:1.7}
+
+.polaroid-wrap{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+.polaroid{
+  width:clamp(180px, 22vw, 280px);
+  border:1px solid rgba(255,255,255,0.1);border-radius:2px;
+  padding:7px 7px 26px;
+  transform:var(--rot,rotate(1.5deg));
+  transition:transform 0.25s,box-shadow 0.25s;
+  box-shadow:0 4px 20px rgba(0,0,0,0.4);
+}
+
+.polaroid-img{
+  width:100%;
+  height:200px;
+  overflow:hidden;
+  border-radius:6px;
+}
+
+.polaroid-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  
+}
+
+/* Field (vertical) */
+.field-img{
+  height:280px;
+}
+
+.field-img img{
+  object-position:center 20%;
+}
+
+/* Teaching (landscape - show full image) */
+.teaching-img{
+  height: 280px;
+}
+
+.teaching-img img{
+  object-fit:contain;
+  object-position: center
+}
+
+.polaroid-img img{
+  filter:brightness(0.9) contrast(1.05);
+}
+
+.clickable-img{
+  cursor:pointer;
+  transition:transform 0.25s ease;
+}
+
+.clickable-img:hover{
+  transform:scale(1.02);
+}
+
+.image-modal{
+  display:none;
+  position:fixed;
+  z-index:9999;
+  inset:0;
+  background:rgba(0,0,0,0.78);
+  backdrop-filter:blur(4px);
+  align-items:center;
+  justify-content:center;
+  padding:2rem;
+}
+
+.image-modal-content{
+  max-width:80vw;
+  max-height:80vh;
+  border-radius:10px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.45);
+}
+
+.image-modal-close{
+  position:absolute;
+  top:20px;
+  right:30px;
+  font-size:2rem;
+  color:white;
+  cursor:pointer;
+  line-height:1;
+}
+
+.exp-item:hover .polaroid{transform:rotate(0deg) scale(1.04);box-shadow:0 8px 30px rgba(0,0,0,0.5)}
+.polaroid{
+  width:clamp(180px, 22vw, 280px);
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:2px;
+  padding:7px 7px 26px;
+  transform:var(--rot,rotate(1.5deg));
+  transition:transform 0.25s,box-shadow 0.25s;
+  box-shadow:0 4px 20px rgba(0,0,0,0.4);
+}
+.polaroid-icon{font-size:1.3rem;opacity:0.2}
+.polaroid-hint{font-size:0.48rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.18);text-align:center;padding:0 4px}
+.polaroid-caption{font-size:0.52rem;letter-spacing:0.08em;font-style:italic;color:rgba(255,255,255,0.18);text-align:center;margin-top:5px}
+
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.2rem}
+.project-card{
+  background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);
+  border-radius:6px;padding:1.8rem;position:relative;overflow:hidden;
+  opacity:0;transform:translateY(16px);
+  transition:opacity 0.6s,transform 0.6s,border-color 0.25s;
+}
+.project-card.visible{opacity:1;transform:translateY(0)}
+.project-card:hover{border-color:rgba(0,210,160,0.18)}
+.project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,#00c9a7,#7b5ea7,transparent);transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
+.project-card:hover::before{transform:scaleX(1)}
+.project-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:rgba(255,255,255,0.05);line-height:1;margin-bottom:0.8rem}
+.project-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:#fff;margin-bottom:0.5rem}
+.project-desc{font-size:0.8rem;font-weight:300;color:rgba(255,255,255,0.38);line-height:1.8}
+.project-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:1rem}
+.project-tag{font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.22);background:rgba(255,255,255,0.04);padding:3px 8px;border-radius:2px}
+.award-card{background:linear-gradient(135deg,rgba(0,180,120,0.1),rgba(123,94,167,0.1));border-color:rgba(0,210,160,0.18)!important}
+.award-badge{font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,229,160,0.55);margin-bottom:0.8rem;display:flex;align-items:center;gap:6px}
+.award-badge::before{content:'★'}
+.award-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:#fff;margin-bottom:0.4rem}
+.award-desc{font-size:0.78rem;color:rgba(255,255,255,0.38);line-height:1.8;font-weight:300}
+
+.contact-section{padding:10vh 8vw;text-align:center;border-top:1px solid rgba(255,255,255,0.05)}
+.contact-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,4rem);font-weight:300;color:#fff;margin-bottom:0.8rem}
+.contact-sub{font-size:0.78rem;color:rgba(255,255,255,0.22);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:2.5rem}
+.contact-links{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap}
+.contact-link{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.32);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:3px;transition:color 0.2s,border-color 0.2s}
+.contact-link:hover{color:#00e5a0;border-color:#00e5a0}
+.footer-note{margin-top:6vh;font-size:0.62rem;color:rgba(255,255,255,0.12);letter-spacing:0.1em}
+
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{to{opacity:1}}
+</style>
+</head>
+<body>
+
+
+<div class="aurora-bg">
+  <div class="stars"></div>
+  <div class="star-twinkle" style="--d:2.1s;--delay:0s;width:2px;height:2px;top:8%;left:22%"></div>
+  <div class="star-twinkle" style="--d:3.4s;--delay:0.5s;width:2px;height:2px;top:14%;left:67%"></div>
+  <div class="star-twinkle" style="--d:1.8s;--delay:1s;width:3px;height:3px;top:5%;left:45%"></div>
+  <div class="star-twinkle" style="--d:2.8s;--delay:0.3s;width:2px;height:2px;top:22%;left:12%"></div>
+  <div class="star-twinkle" style="--d:4s;--delay:1.5s;width:2px;height:2px;top:18%;left:88%"></div>
+  <div class="star-twinkle" style="--d:2.5s;--delay:0.8s;width:3px;height:3px;top:30%;left:55%"></div>
+  <div class="star-twinkle" style="--d:3.1s;--delay:2s;width:2px;height:2px;top:10%;left:78%"></div>
+  <div class="star-twinkle" style="--d:1.6s;--delay:0.2s;width:2px;height:2px;top:35%;left:33%"></div>
+  <div class="star-twinkle" style="--d:3.8s;--delay:1.2s;width:2px;height:2px;top:42%;left:91%"></div>
+  <div class="star-twinkle" style="--d:2.2s;--delay:0.7s;width:3px;height:3px;top:6%;left:5%"></div>
+
+  <div class="aurora-band" style="--bt:8%;--bh:180px;--bc:rgba(0,200,140,0.07);--bdur:12s;--bdel:0s"></div>
+  <div class="aurora-band" style="--bt:30%;--bh:120px;--bc:rgba(100,80,200,0.05);--bdur:15s;--bdel:3s"></div>
+  <div class="aurora-band" style="--bt:55%;--bh:150px;--bc:rgba(0,180,130,0.04);--bdur:10s;--bdel:6s"></div>
+
+  <div class="beam" style="--x:5%;--w:45px;--c1:rgba(0,200,140,0.16);--c2:rgba(0,200,140,0.08);--c3:rgba(0,200,140,0.03);--dur:9s;--del:0s"></div>
+  <div class="beam" style="--x:13%;--w:30px;--c1:rgba(80,120,220,0.12);--c2:rgba(80,120,220,0.06);--c3:rgba(80,120,220,0.02);--dur:12s;--del:1.5s"></div>
+  <div class="beam" style="--x:22%;--w:55px;--c1:rgba(0,220,160,0.18);--c2:rgba(0,220,160,0.09);--c3:rgba(0,220,160,0.03);--dur:8s;--del:0.5s"></div>
+  <div class="beam" style="--x:31%;--w:35px;--c1:rgba(120,80,200,0.10);--c2:rgba(120,80,200,0.05);--c3:rgba(120,80,200,0.02);--dur:14s;--del:2s"></div>
+  <div class="beam" style="--x:40%;--w:60px;--c1:rgba(0,200,150,0.20);--c2:rgba(0,200,150,0.10);--c3:rgba(0,200,150,0.04);--dur:10s;--del:1s"></div>
+  <div class="beam" style="--x:50%;--w:40px;--c1:rgba(60,100,210,0.13);--c2:rgba(60,100,210,0.06);--c3:rgba(60,100,210,0.02);--dur:11s;--del:3s"></div>
+  <div class="beam" style="--x:60%;--w:50px;--c1:rgba(0,210,155,0.17);--c2:rgba(0,210,155,0.08);--c3:rgba(0,210,155,0.03);--dur:9s;--del:0.8s"></div>
+  <div class="beam" style="--x:70%;--w:35px;--c1:rgba(100,70,190,0.11);--c2:rgba(100,70,190,0.05);--c3:rgba(100,70,190,0.02);--dur:13s;--del:2.5s"></div>
+  <div class="beam" style="--x:80%;--w:55px;--c1:rgba(0,195,145,0.16);--c2:rgba(0,195,145,0.08);--c3:rgba(0,195,145,0.03);--dur:10s;--del:1.8s"></div>
+  <div class="beam" style="--x:90%;--w:38px;--c1:rgba(80,100,220,0.12);--c2:rgba(80,100,220,0.06);--c3:rgba(80,100,220,0.02);--dur:11s;--del:0.4s"></div>
+</div>
+
+<div class="page">
+<a href="index.html" class="back-btn">Back</a>
+
+<section class="bio-hero">
+ <div class="nepal-map"
+  style="
+
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  width:min(85vw, 780px);
+  opacity:0;
+  animation:mapAppear 1s 1.2s forwards;
+  pointer-events:none;
+  z-index:0;
+">
+ 
+
+
+  <div class="bio-content">
+    <div>
+      <p class="bio-tag">About me</p>
+      <h1 class="bio-name">Aayusha<strong>Khadka</strong></h1>
+      
+
+<!-- Nepal badge — add this right here -->
+<div style="
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:1.8rem 0;
+  opacity:0;
+  animation:slideLeft 7s 1.0s cubic-bezier(0.4,0,0.2,1) forwards;
+">
+  <div style="width:36px;height:1px;background:linear-gradient(to right,#00c9a7,transparent);flex-shrink:0"></div>
+  <img 
+    src="assets/nepal.webp"
+    style="height:28px;width:auto;filter:invert(1) sepia(1) saturate(3) hue-rotate(115deg) brightness(1.1);opacity:0.85;"
+  />
+
+</div>
+
+<p class="bio-para"></p>
+      <p class="bio-para">Junior year CS student at Louisiana Tech University, originally from Dolakha, Nepal. I like to build things with code, care about people, and find beauty in the space and sky.</p>
+      <div class="skills-row">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">C / C++</span>
+        <span class="skill-tag">HTML & CSS</span>
+        <span class="skill-tag">Research</span>
+      </div>
+    </div>
+    <div class="bio-portrait">
+      <img src="assets/Self-potrait.jpeg"/> 
+    </div>
+  </div>
+</section>
+
+
+
+<section class="page-section">
+  <div class="section-label">Experience</div>
+  <div class="exp-grid">
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">Mar 2024 — Present</div>
+        <div class="exp-location">Ruston, Louisiana</div>
+        <div class="exp-org">Louisiana Tech University — International Student Office</div>
+        <div class="exp-chain">
+          <div class="chain-item current"><div class="chain-role">Senior Admission Assistant</div><div class="chain-desc">Leading admissions support for international students, managing complex workflows and training admission assistants.</div></div>
+          <div class="chain-item"><div class="chain-role">Admission Assistant</div><div class="chain-desc">Reviewed international applications and coordinated directly with prospective students.</div></div>
+          <div class="chain-item"><div class="chain-role">Front Desk Worker</div><div class="chain-desc">First point of contact for international students — guidance, inquiries, welcoming environment.</div></div>
+        </div>
+      </div>
+      <div class="polaroid-wrap">
+        <div class="polaroid" style="--rot:rotate(2deg)">
+          <!-- replace with: <img src="assets/latech.jpg"/> inside polaroid-img -->
+          <div class="polaroid-img"><div class="polaroid-icon">📸</div><div class="polaroid-hint">have no pictures yet idk what to put here</div></div>
+        </div>
+        <div class="polaroid-caption">@ LA Tech</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">October 2023— December 2023</div>
+        <div class="exp-location">Nepal</div>
+        <div class="exp-org">PHRD — Non-Profit Organization</div>
+        <div class="exp-role">Field Researcher</div>
+        <div class="exp-desc">Conducted field research on TCV vaccine coverage and immunization trends across diverse regions.Traveled extensively, from urban to remote areas, to collect and analyze data using CS Entry software.</div>
+      </div>
+      <div class="polaroid-wrap">
+        <div class="polaroid" style="--rot:rotate(-1.5deg)">
+          <div class="polaroid-img field-img">
+            <img src="assets/field-researcher.jpeg" class="clickable-img"/>
+          </div>
+        </div>
+        <div class="polaroid-caption">@ PHRD</div>
+      </div>
+    </div>
+      
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">2024</div>
+        <div class="exp-location">Nepal</div>
+        <div class="exp-org">Teaching — Bibhuti Pathshala</div>
+        <div class="exp-role">Teacher</div>
+        <div class="exp-desc">Taught Science subject to students in Nepal, developing curriculum and fostering an engaging classroom. Built communication and leadership skills while making community impact.</div>
+      </div>
+      <div class="polaroid-wrap">
+        <div class="polaroid" style="--rot:rotate(1deg)">
+          <div class="polaroid-img teaching-img">
+            <img src="assets/teacher.jpg" class="clickable-img"/>
+          </div>
+        </div>
+        <div class="polaroid-caption">Bibhuti Pathshala</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="page-section">
+  <div class="section-label">Projects & Recognition</div>
+  <div class="projects-grid">
+    <div class="project-card award-card"><div class="award-badge">Award</div><div class="award-title">Freshman Expo<br/>Best GPIO Award</div><div class="award-desc">Recognized at Louisiana Tech's Freshman Expo for outstanding GPIO systems design — awarded to the top team project.</div></div>
+    <div class="project-card"><div class="project-num">01</div><div class="project-title">Portfolio Website</div><div class="project-desc">Personal portfolio with parallax mountain hero, animated cat, aurora background and smooth transitions — built from scratch.</div><div class="project-tags"><span class="project-tag">HTML</span><span class="project-tag">CSS</span><span class="project-tag">JavaScript</span></div></div>
+    <div class="project-card"><div class="project-num">02</div><div class="project-title">Remicare</div><div class="project-desc">I contributed to developing RemiCare, a smart wearable watch designed to help children stay organized and safe throughout the day. The system includes a companion app that allows parents to send scheduled or real-time reminders for tasks like hydration and routines, while minimizing distractions in school. It also features GPS-based location tracking to provide accurate, real-time updates, and was developed as part of a freshman year team project.</div><div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">GPIO</span><span class="project-tag">C++</span><span class="project-tag">Hardware</span><span class="project-tag">Flask API</span><span class="project-tag">GPS Tracking</span></div></div>
+    <div class="project-card"><div class="project-num">03</div><div class="project-title">Pomodoro</div><div class="project-desc">I built a Pomodoro web application designed to help users stay focused and manage their time efficiently. The app uses structured work and break intervals to improve productivity, with a clean and minimal interface that keeps users engaged without distractions..</div><div class="project-tags"><span class="project-tag">HTML</span><span class="project-tag">CSS</span><span class="project-tag">JavaScript</span><span class="project-tag">UI Design</span></div></div>
+    <div class="project-card"><div class="project-num">04</div><div class="project-title">TechShell</div><div class="project-desc">I built a custom Unix-like shell in C that supports command execution, input/output redirection, and process management using fork() and execvp(). The project demonstrates low-level systems programming concepts and how operating systems handle user commands.</div><div class="project-tags"><span class="project-tag">C</span><span class="project-tag">Linux</span><span class="project-tag">Systems Programming</span></div></div>
+    <div class="project-card"><div class="project-num">05</div><div class="project-title">Coming Soon</div><div class="project-desc">Always building. Check back for more projects as I explore new areas of CS and software development.</div><div class="project-tags"><span class="project-tag">In Progress</span></div></div>
+  </div>
+</section>
+<section class="page-section">
+  <div class="section-label">Extracurriculars & Honors</div>
+  <div class="exp-grid">
+
+    <!-- ISA chain -->
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">2024-2026</div>
+        <div class="exp-location">Ruston, Louisiana</div>
+        <div class="exp-org">International Student Association (ISA)</div>
+        <div class="exp-chain">
+          <div class="chain-item current">
+            <div class="chain-role">Event Co-ordinator</div>
+            <div class="exp-date">Academic Year 2025-2026</div>
+            <div class="chain-desc">Planned and executed cultural events and programs for the international student community, managing logistics and cross-team collaboration.</div>
+          </div>
+          <div class="chain-item">
+            <div class="chain-role">Public Relations Officer</div>
+            <div class="exp-date" >Academic Year 2024-2025</div>
+            <div class="chain-desc">Managed social outreach and communications for ISA, building visibility and engagement across the university campus.</div>
+          </div>
+        </div>
+      </div>
+     
+
+    <!-- Scholarship honor card -->
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">Louisiana Tech University</div>
+        <div class="exp-location">Ruston, Louisiana</div>
+        <div class="exp-org">Academic Recognition</div>
+        <div class="exp-role">Bounds and Gildow Scholarship Recipient</div>
+        <div class="exp-desc">Recipient of academic scholarship recognition at Louisiana Tech University — awarded for academic excellence, dedication, and outstanding contributions to the university community. Awarded by Ms.Mijeong Kim, Faculty of International Affairs, at the annual scholarship dinner event.</div>
+      </div>
+      <div class="polaroid-wrap">
+        <div class="polaroid" style="--rot:rotate(1deg)">
+          <div class="polaroid-img">
+            <div class="award-badge">Scholarship</div>
+            <img src="assets/scholarship.jpeg" alt="Scholarship Recognition" class="clickable-img"/>
+          </div>
+        </div>
+        <div class="polaroid-caption">Honored</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="contact-section">
+  <p class="contact-title">Let's connect!!</p>
+  <p class="contact-sub">Open to opportunities, conversations & collaborations</p>
+  <div class="contact-links">
+    <a href="mailto:aayusha9896@email.com" class="contact-link">Email</a>
+    <a href="https://www.linkedin.com/in/aayushakhadka/" class="contact-link">LinkedIn</a>
+    <a href="https://github.com/aayushaa2222" class="contact-link">GitHub</a>
+  </div>
+  <p class="footer-note">© 2025 Aayusha Khadka · Dolakha, Nepal</p>
+</section>
+</div>
+
+<div id="imageModal" class="image-modal">
+  <span class="image-modal-close">&times;</span>
+  <img class="image-modal-content" id="modalImg" alt="">
+</div>
+
+<script>
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+  const closeBtn = document.querySelector(".image-modal-close");
+  const clickableImages = document.querySelectorAll(".clickable-img");
+
+  clickableImages.forEach(img => {
+    img.addEventListener("click", () => {
+      modal.style.display = "flex";
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+    });
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+</script>
+
+<script>
+// Animations always reset fresh on every page load — no stored state
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 120);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.exp-item, .project-card').forEach(el => observer.observe(el));
+</script>
