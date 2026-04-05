@@ -172,6 +172,45 @@ body{background:#060a14;font-family:'DM Sans',sans-serif;color:#e8e4dc;overflow-
 .page-section{padding:8vh 8vw}
 .section-label{font-size:0.62rem;letter-spacing:0.35em;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:3rem;display:flex;align-items:center;gap:16px}
 .section-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.06)}
+.scroll-hint {
+  position: absolute;
+  bottom: 3vh;
+  right: 6vw;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  animation: fadeIn 1s 1.4s forwards;
+}
+
+.scroll-hint span {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  writing-mode: vertical-rl;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+  animation: scrollPulse 2s 1.6s infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+  animation: scrollPulse 2s 1.6s infinite;
+}
 
 .exp-grid{display:flex;flex-direction:column;gap:1.2rem}
 .exp-item{
@@ -369,25 +408,9 @@ body{background:#060a14;font-family:'DM Sans',sans-serif;color:#e8e4dc;overflow-
 <a href="index.html" class="back-btn">Back</a>
 
 <section class="bio-hero">
- <div class="nepal-map"
-  style="
-
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%);
-  width:min(85vw, 780px);
-  opacity:0;
-  animation:mapAppear 1s 1.2s forwards;
-  pointer-events:none;
-  z-index:0;
-">
- 
-
-
   <div class="bio-content">
     <div>
-      <p class="bio-tag">About me</p>
+      <p class="bio-tag">Hello I am</p>
       <h1 class="bio-name">Aayusha<strong>Khadka</strong></h1>
       
 
@@ -422,8 +445,12 @@ body{background:#060a14;font-family:'DM Sans',sans-serif;color:#e8e4dc;overflow-
       <img src="assets/Self-potrait.jpeg"/> 
     </div>
   </div>
-</section>
 
+   <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
 
 
 <section class="page-section">
@@ -441,11 +468,12 @@ body{background:#060a14;font-family:'DM Sans',sans-serif;color:#e8e4dc;overflow-
         </div>
       </div>
       <div class="polaroid-wrap">
-        <div class="polaroid" style="--rot:rotate(2deg)">
-          <!-- replace with: <img src="assets/latech.jpg"/> inside polaroid-img -->
-          <div class="polaroid-img"><div class="polaroid-icon">📸</div><div class="polaroid-hint">have no pictures yet idk what to put here</div></div>
+        <div class="polaroid" style="--rot:rotate(-1.5deg)">
+          <div class="polaroid-img field-img">
+            <img src="assets/iso.png" class="clickable-img"/>
+          </div>
         </div>
-        <div class="polaroid-caption">@ LA Tech</div>
+        <div class="polaroid-caption">@ International Student Orientation</div>
       </div>
     </div>
 
@@ -471,7 +499,7 @@ body{background:#060a14;font-family:'DM Sans',sans-serif;color:#e8e4dc;overflow-
       <div>
         <div class="exp-date">2024</div>
         <div class="exp-location">Nepal</div>
-        <div class="exp-org">Teaching — Bibhuti Pathshala</div>
+        <div class="exp-org">Bibhuti Pathshala</div>
         <div class="exp-role">Teacher</div>
         <div class="exp-desc">Taught Science subject to students in Nepal, developing curriculum and fostering an engaging classroom. Built communication and leadership skills while making community impact.</div>
       </div>
